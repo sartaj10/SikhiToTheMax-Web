@@ -13,10 +13,11 @@ import Layout from './components/Layout';
 import RedirectExternal from './components/RedirectExternal';
 import Home from './pages/Home';
 import { DEFAULT_SEARCH_SOURCE, DEFAULT_SEARCH_TYPE } from './constants';
+import SEO from '../../common/seo';
 
 export function NotFound() {
   return (
-    <Layout title="Page not found - SikhiToTheMax">
+    <Layout title={SEO['/404'].title}>
       <RenderPromise
         promise={() =>
           import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
@@ -43,7 +44,7 @@ export default [
     exact: true,
     render(props) {
       return (
-        <Layout title="SikhiToTheMax" isHome {...props}>
+        <Layout title={SEO['/'].title} isHome {...props}>
           <Home {...props} />
         </Layout>
       );
